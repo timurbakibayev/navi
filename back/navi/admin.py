@@ -1,3 +1,6 @@
 from django.contrib import admin
+from navi.models import Subject
+from navi.models import History
 
-# Register your models here.
+admin.site.register(Subject)
+admin.site.register(History)
