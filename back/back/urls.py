@@ -18,6 +18,8 @@ from django.contrib import admin
 from navi.serializers import SubjectViewSet
 from navi.serializers import HistoryViewSet
 from rest_framework import routers
+from navi import views
+
 router = routers.DefaultRouter()
 router.register(r'subjects', SubjectViewSet)
 router.register(r'history', HistoryViewSet)
@@ -25,5 +27,6 @@ router.register(r'history', HistoryViewSet)
 urlpatterns = [
     url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
-    url(r'^api-auth/', include('rest_framework.urls'))
+    url(r'^api-auth/', include('rest_framework.urls')),
+    url(r'update/(?P<code>[a-zA-Z0-9]+)/', views.update),
 ]

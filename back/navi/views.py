@@ -1,3 +1,6 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+def update(request, code):
+    text = "updated for code "+str(code) + " lat: " + request.GET.get("lat","0.0")
+    return render(request, 'ok.html', context={"text": text})
