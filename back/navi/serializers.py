@@ -6,7 +6,7 @@ from navi.models import Subject
 class SubjectSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Subject
-        fields = ('url', 'id', 'name', 'subject_code', 'lon', 'lat', 'icon')
+        fields = ('url', 'id', 'name', 'subject_code', 'lon', 'lat', 'icon', 'extra')
 
 
 class SubjectViewSet(viewsets.ModelViewSet):
@@ -17,7 +17,7 @@ class SubjectViewSet(viewsets.ModelViewSet):
 class HistorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = History
-        fields = ('url', 'id', 'subject', 'subject_code', 'lon', 'lat', 'subject_id', 'subject_icon')
+        fields = ('url', 'id', 'subject', 'subject_code', 'lon', 'lat', 'subject_id', 'subject_icon', 'extra')
 
 
 class HistoryViewSet(viewsets.ModelViewSet):
