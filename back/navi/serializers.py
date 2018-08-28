@@ -17,10 +17,13 @@ class SubjectViewSet(viewsets.ModelViewSet):
 class HistorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = History
-        fields = ('url', 'id', 'subject', 'subject_code', 'lon', 'lat', 'subject_id', 'subject_icon', 'extra')
+        fields = ('url', 'id', 'subject', 'subject_code', 'lon', 'lat', 'subject_id', 'subject_icon', 'extra', 'time')
 
 
 class HistoryViewSet(viewsets.ModelViewSet):
     queryset = History.objects.all()
     serializer_class = HistorySerializer
+
+
+
 

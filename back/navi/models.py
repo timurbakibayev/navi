@@ -15,6 +15,7 @@ class Subject(models.Model):
 
 class History(models.Model):
     subject = models.ForeignKey(Subject, on_delete=models.CASCADE)
+    time = models.DateTimeField(auto_now_add=True)
     lon = models.FloatField(default=0)
     lat = models.FloatField(default=0)
     extra = models.CharField(max_length=1000, default="")

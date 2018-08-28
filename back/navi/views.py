@@ -1,6 +1,11 @@
 from django.shortcuts import render
 from navi.models import Subject
 from navi.models import History
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from navi.serializers import HistorySerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework import permissions
 
 def update(request, code):
     text = "updated for code "+str(code) + " lat: " + request.GET.get("lat","0.0")
@@ -46,3 +51,13 @@ def update(request, code):
             return render(request, 'ok.html', context={"text": "An object with code " + code + " is updated"})
     except Exception as e:
         return render(request, 'ok.html', context={"text": str(e)})
+
+
+@api_view(['GET'])
+@permission_classes((permissions.AllowAny,))
+def subject_history(request, code):
+    subject = Subject.objects.get(subject_code=code)
+    if request.method == 'GET':
+        history = History.objects.filter(subject=subject)
+        serializer = HistorySerializer(history, many=True, context={'request': request})
+        return Response(serializer.data)

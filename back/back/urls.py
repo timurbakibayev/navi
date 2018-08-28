@@ -29,4 +29,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api-auth/', include('rest_framework.urls')),
     url(r'update/(?P<code>[a-zA-Z0-9]+)/', views.update),
+    url(r'subject_history/(?P<code>[a-zA-Z0-9]+)/', views.subject_history),
 ]
